@@ -6,6 +6,10 @@ var Weather = require('Weather');
 var About = require('About');
 var Examples = require('Examples');
 
+// Load kube
+require('style!css!imperavi-kube/dist/css/kube.min.css');
+// $(document).kube();
+
 ReactDOM.render(
 	<Router history={hashHistory}>
 		<Route path='/' component={Main}>
