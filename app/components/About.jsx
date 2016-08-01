@@ -12,7 +12,10 @@ var React = require('react');
 // also using ES6 arrow functions to initiate anonymous function
 var About = () => {
 	return (
-		<h3>About Component</h3>
+		<div>
+			<h3>About</h3>
+			<p>Welcome to the about page!</p>
+		</div>
 	);
 }
 
