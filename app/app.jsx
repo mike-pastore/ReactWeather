@@ -6,9 +6,9 @@ var Weather = require('Weather');
 var About = require('About');
 var Examples = require('Examples');
 
-// Load kube
-require('style!css!imperavi-kube/dist/css/kube.min.css');
-// $(document).kube();
+// Load foundation
+require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
 
 ReactDOM.render(
 	<Router history={hashHistory}>
