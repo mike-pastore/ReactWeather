@@ -16,7 +16,9 @@ var Weather = React.createClass({
 
 		this.setState({
 			isLoading: true,
-			errorMessage: undefined
+			errorMessage: undefined,
+			location: undefined,
+			temp: undefined
 		});
 
 		openWeatherMap.getTemp(location).then(function (temp) {
@@ -31,6 +33,27 @@ var Weather = React.createClass({
 				errorMessage: err.message
 			});
 		});
+	},
+	// gets called once DOM loads with Weather.jsx
+	componentDidMount: function () {
+		// pull location out of URL query (the second "location" is the name of the query key)
+		var location = this.props.location.query.location;
+
+		// check to see query param "location" has a value and is a string
+		if (location && location.length > 0 && typeof location ==='string') {
+			this.handleSearch(location);
+			// reset "location" value
+			window.location.hash = '#/';
+		}
+	},
+	// listen for changes in the URL, to change parent compoment state (Weather.jsx) and update props of children (WeatherMessage.jsx)
+	componentWillReceiveProps: function (newProps) {
+		var location = newProps.location.query.location;
+
+		if (location && location.length > 0 && typeof location ==='string') {
+			this.handleSearch(location);
+			window.location.hash = '#/';
+		}
 	},
 	render: function () {
 		// pull states off Weather module
